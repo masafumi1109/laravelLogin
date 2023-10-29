@@ -16,25 +16,26 @@
 <main class="form-signin w-100 m-auto">
     <form method="post" action="{{route('login')}}">
         @csrf
-        <h1 class="h3 mb-3 fw-normal">ログインフォーム</h1>
         @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
+            <h1 class="h3 mb-3 fw-normal">ログインフォーム</h1>
+            @foreach($errors->all() as $error)
+                <ul class="alert alert-danger">
+                    <li>{{$error}}</li>
                 </ul>
-            </div>
+            @endforeach
         @endif
+
+        <x-alert type="danger" :session="session('danger')"/>
+
         <div class="form-floating">
             <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-            <label for="floatingPassword">ログイン</label>
+            <label for="floatingPassword">password</label>
         </div>
-        <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+        <button class="btn btn-primary w-100 py-2" type="submit">ログイン</button>
     </form>
 </main>
 
